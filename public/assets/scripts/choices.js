@@ -1257,7 +1257,7 @@ var Choices = /** @class */function () {
     }
     this.input.removeEventListeners();
   };
-  Choices.prototype._onKeyDown = function (event) {
+Choices.prototype._onKeyDown = function (event) {
     var keyCode = event.keyCode;
     var activeItems = this._store.activeItems;
     var hasFocusedInput = this.input.isFocussed;
@@ -1283,7 +1283,10 @@ var Choices = /** @class */function () {
           the input was not focussed at the time of key press
           therefore does not have the value of the key.
         */
+        if (/^[a-zA-Z0-9]$/.test(event.key)) {
+        // Append the lowercase version of the key to the input value
         this.input.value += event.key.toLowerCase();
+        }
       }
     }
     switch (keyCode) {
